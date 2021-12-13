@@ -1,0 +1,1 @@
+web: gunicorn --workers=1 'heart_app:create_app()'

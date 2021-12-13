@@ -1,0 +1,133 @@
+<html>
+    {% extends 'home.html' %}
+    
+    
+
+    <body>
+        {% block contents %}
+        <br><br>
+        <h1><p class="text-center">심장질환 예측 의료이용지표</p></h1>
+    <center>
+        <br><br>
+        <div>
+            <img src="{{url_for('static', filename=image_file) }}" width="500" height="300"/>
+        </div>
+        <br><br>
+        <h3> -간단한 정보를 입력받아 예측을 진행합니다-</h3>
+        <br><br>
+        <form method="POST", action="/predict">
+        <b> 
+        고혈압이 있으신가요? :  
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="highbp" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">없다</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="highbp" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">있다</label>
+        </div>
+        <br><br>
+        고지혈증이 있으신가요? : 
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="highchol" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">없다</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="highchol" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">있다</label>
+        </div>
+        <br><br>
+        bmi :  <input type="number", step='5.0', name='bmi', placeholder="입력"> <br><br>
+        담배를 피시나요? : 
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="smoker" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">비흡연자</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="smoker" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">흡연자</label>
+        </div>
+        <br><br>
+
+        뇌졸중을 격은신 적이 있나요? : 
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="stroke" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">없다</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="stroke" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">있다</label>
+        </div>
+        <br><br>
+        주기적으로 운동을 하시나요? :  
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="physactivity" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">운동을 하지 않는다</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="physactivity" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">주기적으로 운동 한다</label>
+        </div>
+        <br><br>
+        과일을 드시나요? :  
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="fruits" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">먹지 않는다</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="fruits" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">먹는다</label>
+        </div>
+        <br><br>
+        스스로 건강하시다고 생각하시나요? :  
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genhlth" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">건강하다고 생가하지 않는다</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="genhlth" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">건강하다고 생각한다</label>
+        </div>
+        <br><br>
+        성별 :  
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sex" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">여자</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="sex" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">남자</label>
+        </div>
+        <br><br>
+        나이 : <input type="number", step='1.0', name='age', placeholder="입력"> <br><br>
+        채소를 드시나요? : 
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="greenvege" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">자주 먹지 않는다.</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="greenvege" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">자주 먹는다.</label>
+        </div>
+        <br><br>
+        천식이 있으신가요? : 
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="asthma" id="inlineRadio1" value="0">
+            <label class="form-check-label" for="inlineRadio1">없다.</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="asthma" id="inlineRadio2" value="1">
+            <label class="form-check-label" for="inlineRadio2">있다.</label>
+        </div>
+        <br><br><br>
+        </b>
+        
+            <input  class="btn btn-outline-info" type="submit" , value='예측하기'>
+        
+        </form>
+
+    </center>
+    {% endblock %}
+    </body>
+    
+</html>

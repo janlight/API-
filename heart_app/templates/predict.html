@@ -1,0 +1,28 @@
+<html>
+
+    <body>
+    
+        <center>
+            <br><br><br><br><br><br><br><br>
+            <h1>  예측결과  </h1>
+        
+            <video autoplay loop muted>
+                <source src="{{url_for('static', filename=video_file) }}" type="video/mp4">
+            </video>        
+            <br>
+        {%if data == 0%}
+        <h1> 심장질환의 발병확률이 낮습니다. </h1> <br><br>
+    
+        {%elif data == 1%}
+        <h1> 심장질환의 발병확률이 낮습니다. </h1>
+        
+        {%endif%}
+    
+            <br><br>
+            <a href='/map'>병원 둘러보기</a><br><br>
+            <a href='/'>홈 화면으로 돌아가기</a>
+        </center>
+    
+    </body>
+    
+    </html>
